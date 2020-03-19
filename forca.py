@@ -1,9 +1,6 @@
 import random
 
 
-
-
-
 def jogar():
     imprime_mensagem_abertura()
     palavra_secreta = carrega_palavra_secreta()
@@ -40,14 +37,11 @@ def imprime_mensagem_abertura():
 
 
 def carrega_palavra_secreta():
-    arquivo = open("palavras.txt", "r")
     palavras = []
-
-    for linha in arquivo:
-        linha = linha.strip()
-        palavras.append(linha)
-    arquivo.close()
-
+    with open("palavras.txt", "r") as arquivo:
+        for linha in arquivo:
+            linha = linha.strip()
+            palavras.append(linha)
     numero = random.randrange(0, len(palavras))
     return palavras[numero].upper()
 
